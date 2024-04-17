@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_examenwebModelStoreContainer" CdmEntityContainer="db_examenwebEntities">
+    <EntitySetMapping Name="FuelConsumptions">
+      <EntityTypeMapping TypeName="db_examenwebModel.FuelConsumption">
+        <MappingFragment StoreEntitySet="FuelConsumption">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="vehicle_id" ColumnName="vehicle_id" />
+          <ScalarProperty Name="volume" ColumnName="volume" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="date_consoommation" ColumnName="date_consoommation" />
+          <ScalarProperty Name="mileage" ColumnName="mileage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pylones">
+      <EntityTypeMapping TypeName="db_examenwebModel.Pylone">
+        <MappingFragment StoreEntitySet="Pylone">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="line" ColumnName="line" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="degradation" ColumnName="degradation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rests">
+      <EntityTypeMapping TypeName="db_examenwebModel.Rest">
+        <MappingFragment StoreEntitySet="Rest">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="worker_id" ColumnName="worker_id" />
+          <ScalarProperty Name="date_rest" ColumnName="date_rest" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateurs">
+      <EntityTypeMapping TypeName="db_examenwebModel.Utilisateur">
+        <MappingFragment StoreEntitySet="Utilisateur">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LoginUtil" ColumnName="LoginUtil" />
+          <ScalarProperty Name="Mot_de_passe" ColumnName="Mot de passe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicles">
+      <EntityTypeMapping TypeName="db_examenwebModel.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicle">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="license_plate" ColumnName="license_plate" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="fuel_type" ColumnName="fuel_type" />
+          <ScalarProperty Name="initial_mileage" ColumnName="initial_mileage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Works">
+      <EntityTypeMapping TypeName="db_examenwebModel.Work">
+        <MappingFragment StoreEntitySet="Work">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="worker_id" ColumnName="worker_id" />
+          <ScalarProperty Name="pylone_id" ColumnName="pylone_id" />
+          <ScalarProperty Name="work_date" ColumnName="work_date" />
+          <ScalarProperty Name="progress" ColumnName="progress" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workers">
+      <EntityTypeMapping TypeName="db_examenwebModel.Worker">
+        <MappingFragment StoreEntitySet="Worker">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="cin" ColumnName="cin" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

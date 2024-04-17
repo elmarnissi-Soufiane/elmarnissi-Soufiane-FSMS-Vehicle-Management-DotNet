@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_examenwebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="FuelConsumption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vehicle_id" Type="Int32" Nullable="false" />
+    <Property Name="volume" Type="Double" Nullable="false" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="date_consoommation" Type="DateTime" Precision="0" />
+    <Property Name="mileage" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Vehicle" Relationship="Self.FK__FuelConsu__vehic__1CF15040" FromRole="FuelConsumption" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Pylone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="line" Type="Int32" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="latitude" Type="Double" Nullable="false" />
+    <Property Name="longitude" Type="Double" Nullable="false" />
+    <Property Name="degradation" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Works" Relationship="Self.FK__Work__pylone_id__182C9B23" FromRole="Pylone" ToRole="Work" />
+  </EntityType>
+  <EntityType Name="Rest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="worker_id" Type="Int32" Nullable="false" />
+    <Property Name="date_rest" Type="DateTime" Precision="0" />
+    <Property Name="description" Type="String" MaxLength="99" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Worker" Relationship="Self.FK__Rest__worker_id__1FCDBCEB" FromRole="Rest" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="Utilisateur">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginUtil" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mot_de_passe" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="license_plate" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="model" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fuel_type" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="initial_mileage" Type="Double" Nullable="false" />
+    <NavigationProperty Name="FuelConsumptions" Relationship="Self.FK__FuelConsu__vehic__1CF15040" FromRole="Vehicle" ToRole="FuelConsumption" />
+  </EntityType>
+  <EntityType Name="Work">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="worker_id" Type="Int32" Nullable="false" />
+    <Property Name="pylone_id" Type="Int32" Nullable="false" />
+    <Property Name="work_date" Type="DateTime" Precision="0" />
+    <Property Name="progress" Type="Double" Nullable="false" />
+    <Property Name="payment" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Pylone" Relationship="Self.FK__Work__pylone_id__182C9B23" FromRole="Work" ToRole="Pylone" />
+    <NavigationProperty Name="Worker" Relationship="Self.FK__Work__worker_id__173876EA" FromRole="Work" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cin" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="full_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="birth_date" Type="DateTime" Precision="0" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="job_title" Type="String" MaxLength="99" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Rests" Relationship="Self.FK__Rest__worker_id__1FCDBCEB" FromRole="Worker" ToRole="Rest" />
+    <NavigationProperty Name="Works" Relationship="Self.FK__Work__worker_id__173876EA" FromRole="Worker" ToRole="Work" />
+  </EntityType>
+  <Association Name="FK__FuelConsu__vehic__1CF15040">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FuelConsumption" Type="Self.FuelConsumption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FuelConsumption">
+        <PropertyRef Name="vehicle_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Work__pylone_id__182C9B23">
+    <End Role="Pylone" Type="Self.Pylone" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Work" Type="Self.Work" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pylone">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Work">
+        <PropertyRef Name="pylone_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rest__worker_id__1FCDBCEB">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Rest" Type="Self.Rest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rest">
+        <PropertyRef Name="worker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Work__worker_id__173876EA">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Work" Type="Self.Work" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Work">
+        <PropertyRef Name="worker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_examenwebEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="FuelConsumptions" EntityType="Self.FuelConsumption" />
+    <EntitySet Name="Pylones" EntityType="Self.Pylone" />
+    <EntitySet Name="Rests" EntityType="Self.Rest" />
+    <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
+    <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+    <EntitySet Name="Works" EntityType="Self.Work" />
+    <EntitySet Name="Workers" EntityType="Self.Worker" />
+    <AssociationSet Name="FK__FuelConsu__vehic__1CF15040" Association="Self.FK__FuelConsu__vehic__1CF15040">
+      <End Role="Vehicle" EntitySet="Vehicles" />
+      <End Role="FuelConsumption" EntitySet="FuelConsumptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Work__pylone_id__182C9B23" Association="Self.FK__Work__pylone_id__182C9B23">
+      <End Role="Pylone" EntitySet="Pylones" />
+      <End Role="Work" EntitySet="Works" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rest__worker_id__1FCDBCEB" Association="Self.FK__Rest__worker_id__1FCDBCEB">
+      <End Role="Worker" EntitySet="Workers" />
+      <End Role="Rest" EntitySet="Rests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Work__worker_id__173876EA" Association="Self.FK__Work__worker_id__173876EA">
+      <End Role="Worker" EntitySet="Workers" />
+      <End Role="Work" EntitySet="Works" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

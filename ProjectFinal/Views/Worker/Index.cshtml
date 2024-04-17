@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ProjectFinal.Models.Worker>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    <a href="@Url.Action("Create", "Worker")" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-add-to-queue"></i>
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.full_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.birth_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.start_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.job_title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.full_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.birth_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.start_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.job_title)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Worker", new { id = item.Id })">
+                <i class="menu-icon tf-icons bx bx-edit-alt"></i>
+            </a>
+
+            <a href="@Url.Action("Details", "Worker", new { id = item.Id })">
+                <i class="menu-icon tf-icons bx bx-show"></i>
+            </a>
+
+            <a href="@Url.Action("Delete", "Worker", new { id = item.Id })">
+                <i class="menu-icon tf-icons bx bx-trash"></i>
+            </a>
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>*@
+    </tr>
+}
+
+</table>

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ProjectFinal.Models.Pylone>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    <a href="@Url.Action("Create", "Pylone")" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-add-to-queue"></i>
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.line)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.degradation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.line)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.degradation)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Pylone", new { id = item.Id })">
+                <i class="menu-icon tf-icons bx bx-edit-alt"></i>
+            </a>
+
+            <a href="@Url.Action("Details", "Pylone", new { id = item.Id })">
+                <i class="menu-icon tf-icons bx bx-show"></i>
+            </a>
+
+            <a href="@Url.Action("Delete", "Pylone", new { id = item.Id })">
+                <i class="menu-icon tf-icons bx bx-trash"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
